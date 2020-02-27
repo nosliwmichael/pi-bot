@@ -1,5 +1,7 @@
 # pi-bot-controls
 
+_This project will not work without PYNPUT_
+
 This project aims to provide a simple way to interact with DC motors connected to a RaspberryPi using Python.
 The first step is to define a simple class to abstract our interaction with the motors.
 
