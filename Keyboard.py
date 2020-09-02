@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from pynput import keyboard
 import sys
 
@@ -8,23 +9,23 @@ class KeyboardListener:
     
     def on_press(self, key):
         try:
-            event = self.keyMap.keyPressEvent(key)
+            event = self.keyMap.keyEvent(key, 'pressed')
             return self.run_event(key, event)
         except:
             print(sys.exc_info())
 
     def on_release(self, key):
         try:
-            event = self.keyMap.keyReleaseEvent(key)
+            event = self.keyMap.keyEvent(key, 'released')
             return self.run_event(key, event)
         except:
             print(sys.exc_info())
 
     def run_event(self, key, event):
-        if event == 'close_event':
-            return self.close()
-        elif event is not None:
-            event(key)
+        if event is not None:
+            result = event(key)
+            if result == 'close':
+                return self.close()
         else:
             print('No event for key: {0}'.format(key))
 
@@ -43,18 +44,10 @@ class KeyMap:
         self.keyMap = keyMap
         self.events = events
 
-    def keyPressEvent(self, key):
+    def keyEvent(self, key, eventType):
         for k in self.keyMap['keys']:
             keyName = k['name']
-            keyEvent = k['pressed']
-            event = self.getEvent(key, keyName, keyEvent)
-            if (event):
-                return event
-
-    def keyReleaseEvent(self, key):
-        for k in self.keyMap['keys']:
-            keyName = k['name']
-            keyEvent = k['released']
+            keyEvent = k[eventType]
             event = self.getEvent(key, keyName, keyEvent)
             if (event):
                 return event
@@ -64,10 +57,11 @@ class KeyMap:
         try:
             if ((hasattr(key, 'name') and key.name == keyName and keyEvent) or
                 (hasattr(key, 'char') and key.char == keyName and keyEvent)):
-                if keyEvent == 'close_event':
-                    return keyEvent
-                else:
-                    event = getattr(self.events, keyEvent)
-                    return event
+                #if keyEvent == 'close_event':
+                #    getattr(self.events, keyEvent)
+                #    return keyEvent
+                #else:
+                event = getattr(self.events, keyEvent)
+                return event
         except:
             print(sys.exc_info())
