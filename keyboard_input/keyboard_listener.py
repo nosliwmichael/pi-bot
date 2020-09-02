@@ -1,33 +1,31 @@
 #!/usr/bin/env python
-from pynput import keyboard
 import sys
+from pynput import keyboard
 
 class KeyboardListener:
 
-    def __init__(self, keyMap):
-        self.keyMap = keyMap
+    def __init__(self, key_map):
+        self.key_map = key_map
     
     def on_press(self, key):
         try:
-            event = self.keyMap.getMotorEvent(key, isPressed=True)
+            event = self.key_map.getMotorEvent(key, is_pressed=True)
             return self.run_event(key, event)
         except:
             print(sys.exc_info())
 
     def on_release(self, key):
         try:
-            event = self.keyMap.getMotorEvent(key, isPressed=False)
+            event = self.key_map.getMotorEvent(key, is_pressed=False)
             return self.run_event(key, event)
         except:
             print(sys.exc_info())
 
     def run_event(self, key, event):
         if event is not None:
-            result = event(key)
+            result = event()
             if result == 'close':
                 return self.close()
-        else:
-            print('No event for key: {0}'.format(key))
 
     def start(self):
         with keyboard.Listener(

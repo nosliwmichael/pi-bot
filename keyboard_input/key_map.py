@@ -6,16 +6,14 @@ class KeyMap:
         self.inputs = inputs
         self.motor_events = motor_events
 
-    def getMotorEvent(self, key, isPressed):
+    def getMotorEvent(self, key, is_pressed):
         for i in self.inputs:
             inputName = i['name']
-            inputEvent = i['pressed' if isPressed else 'released']
-            event = None
+            inputEvent = i['pressed' if is_pressed else 'released']
             try:
                 if (inputEvent and
                     (hasattr(key, 'name') and key.name == inputName) or
                     (hasattr(key, 'char') and key.char == inputName)):
-                    event = getattr(self.motor_events, inputEvent)
-                    return event
+                    return getattr(self.motor_events, inputEvent)
             except:
                 print(sys.exc_info())
