@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!python3
 from gpiozero import Motor
 
 class MotorEvents:
@@ -14,31 +14,31 @@ class MotorEvents:
             self.moving = True
             self.motor_left.forward()
             self.motor_right.forward()
-            print('Drive forward')
+            return 'Drive forward'
     def down_event(self):
         if not self.moving:
             self.moving = True
             self.motor_left.backward()
             self.motor_right.backward()
-            print('Drive backward')
+            return 'Drive backward'
     def left_event(self):
         if not self.moving:
             self.moving = True
             self.motor_left.backward()
             self.motor_right.forward()
-            print('Drive left')
+            return 'Drive left'
     def right_event(self):
         if not self.moving:
             self.moving = True
             self.motor_left.forward()
             self.motor_right.backward()
-            print('Drive right')
+            return 'Drive right'
     def stop_event(self):
         if self.moving:
             self.moving = False
             self.motor_left.stop()
             self.motor_right.stop()
-            print('Stop')
+            return 'Stop'
     def close_event(self):
         self.stop_event()
         self.motor_left.close()

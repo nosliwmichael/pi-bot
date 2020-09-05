@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!python3
 import sys
 
 # Check if any command line arguments have been passed

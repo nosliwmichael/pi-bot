@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!python3
 import sys
 from pynput import keyboard
 
@@ -24,6 +24,7 @@ class KeyboardListener:
     def run_event(self, key, event):
         if event is not None:
             result = event()
+            print(result)
             if result == 'close':
                 return self.close()
 

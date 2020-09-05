@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!python3
 import json
 from motor_events import MotorEvents
 from keyboard_input.keyboard_listener import KeyboardListener
@@ -14,7 +14,7 @@ with open('./data-map.json') as data_map_file:
     
     # Create key map used to translate key events to motor events
     key_map = KeyMap(data_map['inputs'], motor_events)
-    
+
     # Start keyboard listener to detect key events
     keyboard_listener = KeyboardListener(key_map)
     keyboard_listener.start()
