@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import json
 from motor_events import MotorEvents
-from keyboard_listener import KeyboardListener
-from key_map import KeyMap
+from keyboard_input.keyboard_listener import KeyboardListener
+from keyboard_input.key_map import KeyMap
 
 with open('./data-map.json') as data_map_file:
     
