@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 # Define a route
 @app.route(rule='/pi-bot', methods=['POST'])
-def hello_world():
+def bot_control():
     body = request.get_json()
     event_name = body['event']
     event = getattr(motor_events, event_name)
