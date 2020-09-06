@@ -20,7 +20,6 @@ CORS(app)
 # Define a route
 @app.route(rule='/control', methods=['POST'])
 def control():
-    print('Control')
     body = request.get_json()
     event_name = body['event']
     event_method = getattr(motor_events, event_name)
