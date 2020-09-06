@@ -9,11 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   responses: string[] = [];
+  streamUrl: string;
 
   constructor(private botService: BotService) {}
 
   ngOnInit(): void {
-    this.stream();
+    this.streamUrl = this.botService.getStreamUrl();
   }
 
   sendEvent(eventName: string) {
@@ -21,14 +22,6 @@ export class AppComponent implements OnInit {
       response => {
         this.responses.push(response.message);
       },
-    );
-  }
-
-  stream() {
-    this.botService.stream().subscribe(
-      response => {
-        console.log(response);
-      }
     );
   }
 

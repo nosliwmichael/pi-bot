@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BotService {
 
-  private readonly IS_LOCAL = true;
+  private readonly IS_LOCAL = false;
   private readonly DOMAIN = this.IS_LOCAL ? 'http://localhost' : 'http://192.168.1.219';
   private readonly PORT = ':5000';
   private readonly BASE_URL = `${this.DOMAIN}${this.PORT}`;
@@ -16,8 +16,8 @@ export class BotService {
 
   constructor(private http: HttpClient) { }
 
-  stream(): Observable<any> {
-    return this.http.get<any>(`${this.BASE_URL}${this.STREAM_ENDPOINT}`);
+  getStreamUrl(): string {
+    return `${this.BASE_URL}${this.STREAM_ENDPOINT}`;
   }
 
   sendEvent(eventName: string): Observable<{message: string}> {

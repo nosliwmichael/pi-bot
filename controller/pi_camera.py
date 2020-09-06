@@ -29,7 +29,7 @@ from threading import Condition
 from time import sleep
 import typing
 
-import picamera
+from picamera import *
 
 class JpegStreamIO(io.BytesIO):
     def __init__(self, *args, **kwargs):
