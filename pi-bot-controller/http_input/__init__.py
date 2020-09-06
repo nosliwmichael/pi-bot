@@ -24,4 +24,4 @@ def bot_control():
     return response if response != None else 'Command already in progress...'
 
 # Start the server
-app.run()
+app.run(host='0.0.0.0')
