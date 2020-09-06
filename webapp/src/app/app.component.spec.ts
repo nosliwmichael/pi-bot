@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'pi-bot-webapp'`, () => {
+  it(`should have as title 'webapp'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('pi-bot-webapp');
+    expect(app.title).toEqual('webapp');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('pi-bot-webapp app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('webapp app is running!');
   });
 });
