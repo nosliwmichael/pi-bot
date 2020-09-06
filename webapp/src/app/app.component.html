@@ -1,21 +1,17 @@
-<header>
-
-  <h1>Pi-Bot Webapp</h1>
-
-</header>
-
 <main>
 
   <div class="main-content-container">
+
+    <div class="video-container">
+      <img [src]="streamUrl" alt="Live video feed..."/>
+    </div>
 
     <div class="control-pad-container">
       <app-control-pad (controlEvent)="sendEvent($event)"></app-control-pad>
     </div>
 
-    <div class="response-container">
+    <div *ngIf="showConsole" class="response-container">
       <app-response [responses]="responses"></app-response>
-
-      <video src="{{streamUrl}}"></video>
     </div>
 
   </div>

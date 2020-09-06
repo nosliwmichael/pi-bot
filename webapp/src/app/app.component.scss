@@ -7,17 +7,28 @@ header {
   border-bottom: 2px solid $primary-border-color;
   box-shadow: 0px 1px .6em $shadow-color;
   padding: 1em;
-  margin: 0 0 2em 0;
+  margin: 0 0 1em 0;
 }
 
 main {
+  margin: 1em 0 0 0;
   display: flex;
   justify-content: center;
   .main-content-container {
     max-width: 800px;
     width: 80%;
+    .video-container {
+      border: 1px solid $primary-border-color;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      img {
+        width: 100%;
+        transform: rotate(180deg);
+      }
+    }
     .control-pad-container {
-      margin: 0 0 1em 0;
+      margin: 1em 0 0 0;
     }
   }
 }
