@@ -1,7 +1,7 @@
 #!python3
 import json
 from motor_events import MotorEvents
-from flask import Flask, request
+from flask import Flask, Response, request, make_response
 from flask_cors import CORS
 
 with open('./data-map.json') as data_map_file:
@@ -17,13 +17,23 @@ app = Flask(__name__)
 CORS(app)
 
 # Define a route
-@app.route(rule='/pi-bot', methods=['POST'])
-def bot_control():
+@app.route(rule='/control', methods=['POST'])
+def control():
+    print('Control')
     body = request.get_json()
     event_name = body['event']
-    event = getattr(motor_events, event_name)
-    response = event()
-    return response if response != None else 'Command already in progress...'
+    event_method = getattr(motor_events, event_name)
+    event_response = event_method()
+    return make_response({
+        'message': event_response if event_response != None else 'Command already in progress...'
+    }, 200)
+
+@app.route(rule='/stream', methods=['GET'])
+def stream():
+    print('Stream')
+    return make_response({
+        'data': 'stream'
+    }, 200)
 
 # Start the server
 app.run(host='0.0.0.0')

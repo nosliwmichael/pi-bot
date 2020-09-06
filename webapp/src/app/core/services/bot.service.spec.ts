@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CommandService } from './command.service';
+import { BotService } from './bot.service';
 
-describe('CommandService', () => {
+describe('BotService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: CommandService = TestBed.get(CommandService);
+    const service: BotService = TestBed.get(BotService);
     expect(service).toBeTruthy();
   });
 });

@@ -1,24 +1,33 @@
-import { CommandService } from './core/services/command.service';
-import { Component } from '@angular/core';
+import { BotService } from './core/services/bot.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   responses: string[] = [];
 
-  constructor(private commandService: CommandService) {}
+  constructor(private botService: BotService) {}
+
+  ngOnInit(): void {
+    this.stream();
+  }
 
   sendEvent(eventName: string) {
-    this.commandService.sendEvent(eventName).subscribe(
+    this.botService.sendEvent(eventName).subscribe(
       response => {
-        this.responses.push(response);
+        this.responses.push(response.message);
       },
-      error => {
-        this.responses.push(error.error.text);
+    );
+  }
+
+  stream() {
+    this.botService.stream().subscribe(
+      response => {
+        console.log(response);
       }
     );
   }

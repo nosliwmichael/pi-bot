@@ -1,4 +1,4 @@
-import { CommandService } from './../core/services/command.service';
+import { BotService } from '../core/services/bot.service';
 import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 import { faCaretUp, faCaretLeft, faCaretRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { faStopCircle } from '@fortawesome/free-regular-svg-icons';

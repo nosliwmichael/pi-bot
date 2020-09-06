@@ -8,4 +8,4 @@ if (len(sys.argv) > 1):
     if (input_type == 'keyboard'):
         import keyboard_input
     elif (input_type == 'http'):
-        import http_input
+        import server
