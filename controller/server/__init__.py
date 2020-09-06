@@ -1,7 +1,7 @@
 #!python3
 import json
 from motor_events import MotorEvents
-from flask import Flask, Response, request, make_response
+from flask import Flask, Response, request, make_response, jsonify
 from flask_cors import CORS
 import pi_camera
 
@@ -17,10 +17,6 @@ with open('./data-map.json') as data_map_file:
 app = Flask(__name__)
 CORS(app)
 
-with pi_camera.StreamPiCamera() as camera:
-    # Start the server
-    app.run(host='0.0.0.0')
-
 # Define a route
 @app.route(rule='/control', methods=['POST'])
 def control():
@@ -29,9 +25,7 @@ def control():
     event_name = body['event']
     event_method = getattr(motor_events, event_name)
     event_response = event_method()
-    return make_response({
-        'message': event_response if event_response != None else 'Command already in progress...'
-    }, 200)
+    return jsonify(message = event_response if event_response != None else 'Command already in progress..')
 
 @app.route(rule='/stream', methods=['GET'])
 def stream():
@@ -42,3 +36,7 @@ def stream():
     resp.headers["Pragma"] = "no-cache"
     resp.headers["Content-Type"] = "multipart/x-mixed-replace; boundary=FRAME"
     return resp
+
+with pi_camera.StreamPiCamera() as camera:
+    # Start the server
+    app.run(host='0.0.0.0')
