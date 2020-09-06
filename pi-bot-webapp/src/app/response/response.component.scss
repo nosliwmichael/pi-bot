@@ -1,0 +1,22 @@
+@import '../../assets/partials/variables.scss';
+
+.console {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    box-shadow: 0 0 10px 2px $shadow-color;
+    padding: 1em;
+    width: 800px;
+    height: 200px;
+    overflow: scroll;
+}
+
+.blinking{
+  animation: blinkingText 1.2s infinite;
+}
+@keyframes blinkingText{
+  0%{ color: white; }
+  33%{ color: white; }
+  66%{ color: transparent; }
+  100%{ color:transparent; }
+}

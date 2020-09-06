@@ -1,0 +1,21 @@
+<header>
+
+  <h1>Pi-Bot Webapp</h1>
+
+</header>
+
+<main>
+
+  <div class="main-content-container">
+
+    <div class="control-pad-container">
+      <app-control-pad (controlEvent)="sendEvent($event)"></app-control-pad>
+    </div>
+
+    <div class="response-container">
+      <app-response [responses]="responses"></app-response>
+    </div>
+
+  </div>
+
+</main>

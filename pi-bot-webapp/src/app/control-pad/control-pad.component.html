@@ -1,0 +1,17 @@
+<div class="control-pad">
+  <button class="up-button" (click)="controlEvent.emit('up_event')">
+    <fa-icon [icon]="upIcon" size="6x"></fa-icon>
+  </button>
+  <button class="left-button" (click)="controlEvent.emit('left_event')">
+    <fa-icon [icon]="leftIcon" size="6x"></fa-icon>
+  </button>
+  <button class="stop-button" (click)="controlEvent.emit('stop_event')">
+    <fa-icon [icon]="stopIcon" size="6x"></fa-icon>
+  </button>
+  <button class="right-button" (click)="controlEvent.emit('right_event')">
+    <fa-icon [icon]="rightIcon" size="6x"></fa-icon>
+  </button>
+  <button class="down-button" (click)="controlEvent.emit('down_event')">
+    <fa-icon [icon]="downIcon" size="6x"></fa-icon>
+  </button>
+</div>

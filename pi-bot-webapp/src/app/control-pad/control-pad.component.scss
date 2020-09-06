@@ -1,0 +1,28 @@
+button {
+  cursor: pointer;
+  background: black;
+  border: 1px solid white;
+  border-radius: 4px;
+  fa-icon {
+    color: white;
+  }
+}
+.up-button {
+  grid-area: upButton;
+}.left-button {
+  grid-area: leftButton;
+}.stop-button {
+  grid-area: stopButton;
+}.right-button {
+  grid-area: rightButton;
+}.down-button {
+  grid-area: downButton;
+}
+.control-pad {
+  text-align: center;
+  display: grid;
+  grid-template:
+            '. upButton .'
+            'leftButton stopButton rightButton'
+            '. downButton .';
+}
