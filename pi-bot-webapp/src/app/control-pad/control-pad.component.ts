@@ -1,5 +1,5 @@
 import { CommandService } from './../core/services/command.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 import { faCaretUp, faCaretLeft, faCaretRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { faStopCircle } from '@fortawesome/free-regular-svg-icons';
 
@@ -12,6 +12,14 @@ export class ControlPadComponent implements OnInit {
 
   @Output() controlEvent = new EventEmitter<string>();
 
+  KEY_CODE = {
+    ArrowUp: 'up_event',
+    ArrowLeft: 'left_event',
+    ArrowRight: 'down_event',
+    ArrowDown: 'right_event',
+    Escape: 'close_event',
+  };
+
   upIcon = faCaretUp;
   leftIcon = faCaretLeft;
   rightIcon = faCaretRight;
@@ -21,6 +29,18 @@ export class ControlPadComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  @HostListener('window:keydown', ['$event'])
+  keyUpEvent(event: KeyboardEvent) {
+    const motorEvent = this.KEY_CODE[event.key];
+    if (motorEvent && event.type === 'keydown') {
+      this.controlEvent.emit(motorEvent);
+      console.log(motorEvent, event);
+    } else if (motorEvent && event.type === 'keyup') {
+      this.controlEvent.emit('stop_event');
+    }
   }
 
 }

@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  responses: string[];
+  responses: string[] = [];
 
   constructor(private commandService: CommandService) {}
 
@@ -16,6 +16,9 @@ export class AppComponent {
     this.commandService.sendEvent(eventName).subscribe(
       response => {
         this.responses.push(response);
+      },
+      error => {
+        this.responses.push(error.error.text);
       }
     );
   }

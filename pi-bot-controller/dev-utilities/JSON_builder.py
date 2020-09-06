@@ -35,10 +35,10 @@ data['inputs'] = [
     }
 ]
 data['pins'] = {
-    'left_forward': 27,
-    'left_backward': 17,
+    'left_forward': 17,
+    'left_backward': 27,
     'right_forward': 6,
-    'right_backward': 23
+    'right_backward': 13
 }
 with open('./data-map.json', 'w') as outfile:
     json.dump(data, outfile)
