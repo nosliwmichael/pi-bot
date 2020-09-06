@@ -3,6 +3,7 @@ import json
 from motor_events import MotorEvents
 from flask import Flask, Response, request, make_response
 from flask_cors import CORS
+import pi_camera
 
 with open('./data-map.json') as data_map_file:
 
@@ -15,6 +16,10 @@ with open('./data-map.json') as data_map_file:
 # Create flask server application
 app = Flask(__name__)
 CORS(app)
+
+with pi_camera.StreamPiCamera() as camera:
+    # Start the server
+    app.run(host='0.0.0.0')
 
 # Define a route
 @app.route(rule='/control', methods=['POST'])
@@ -30,10 +35,10 @@ def control():
 
 @app.route(rule='/stream', methods=['GET'])
 def stream():
-    print('Stream')
-    return make_response({
-        'data': 'stream'
-    }, 200)
-
-# Start the server
-app.run(host='0.0.0.0')
+    resp = Response(camera.stream_generator())
+    resp.headers["Access-Control-Allow-Origin"] = "*"
+    resp.headers["Age"] = 0
+    resp.headers["Cache-Control"] = "no-cache, private"
+    resp.headers["Pragma"] = "no-cache"
+    resp.headers["Content-Type"] = "multipart/x-mixed-replace; boundary=FRAME"
+    return resp
