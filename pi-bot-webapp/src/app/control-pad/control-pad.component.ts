@@ -15,8 +15,8 @@ export class ControlPadComponent implements OnInit {
   KEY_CODE = {
     ArrowUp: 'up_event',
     ArrowLeft: 'left_event',
-    ArrowRight: 'down_event',
-    ArrowDown: 'right_event',
+    ArrowRight: 'right_event',
+    ArrowDown: 'down_event',
     Escape: 'close_event',
   };
 
