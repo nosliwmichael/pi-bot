@@ -37,7 +37,6 @@ export class ControlPadComponent implements OnInit {
     const motorEvent = this.KEY_CODE[event.key];
     if (motorEvent && event.type === 'keydown') {
       this.controlEvent.emit(motorEvent);
-      console.log(motorEvent, event);
     } else if (motorEvent && event.type === 'keyup') {
       this.controlEvent.emit('stop_event');
     }
