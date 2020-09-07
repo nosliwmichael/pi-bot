@@ -6,7 +6,7 @@
       <img [src]="streamUrl" alt="Live video feed..."/>
     </div>
 
-    <div class="control-pad-container">
+    <div *ngIf="showControls" class="control-pad-container">
       <app-control-pad (controlEvent)="sendEvent($event)"></app-control-pad>
     </div>
 
