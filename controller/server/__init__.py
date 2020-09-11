@@ -28,7 +28,7 @@ CORS(app)
 
 @app.route(rule='/pi-cam', methods=['GET'])
 def web_stream():
-    return flask.render_template('web/index.html')
+    return flask.render_template('index.html')
 
 @app.route(rule='/video-stream', methods=['GET'])
 def stream():

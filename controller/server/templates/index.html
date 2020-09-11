@@ -5,9 +5,15 @@
   <title>Live Stream</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <img src="/video-stream"/>
+  <style>
+    img {
+      width: 100%;
+      height: width / 1.33;
+      transform: rotate(180deg);
+    }
+  </style>
+  <img src="/video-stream"/>
 </body>
 </html>
