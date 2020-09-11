@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   showConsole = false;
-  showControls = true;
+  showControls = false;
   responses: string[] = [];
   streamUrl: string;
 

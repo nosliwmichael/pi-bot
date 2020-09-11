@@ -1,6 +1,8 @@
 #!python3
 import sys
 
+print(sys.path)
+
 # Check if any command line arguments have been passed
 if (len(sys.argv) > 1):
     input_type = sys.argv[1]
