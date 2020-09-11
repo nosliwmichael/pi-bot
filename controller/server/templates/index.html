@@ -8,12 +8,17 @@
 </head>
 <body>
   <style>
+    .video-container {
+      display: flex;
+      justify-content: center;
+    }
     img {
-      width: 100%;
-      height: width / 1.33;
+      height: -webkit-fill-available;
       transform: rotate(180deg);
     }
   </style>
-  <img src="/video-stream"/>
+  <div class="video-container">
+    <img src="/video-stream"/>
+  </div>
 </body>
 </html>
